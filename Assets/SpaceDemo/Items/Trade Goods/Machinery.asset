@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d97977a4be7f2408568083d8d7f061, type: 3}
+  m_Name: Machinery
+  m_EditorClassIdentifier: 
+  goodID: MCN
+  displayName: Machinery
+  icon: {fileID: 5832957814837902778, guid: 7d21adb2f496e0740b993cdc39a5e5e0, type: 3}
+  basePrice: 50
+  unitName: u
+  maxStack: 64
+  coeffs:
+  - type: 2
+    coeff: 1.2
+  - type: 3
+    coeff: 0.7
+  - type: 4
+    coeff: 0.7
+  productions:
+  - type: 0
+    minProduction: 2
+    maxProduction: 5
+  - type: 1
+    minProduction: -1
+    maxProduction: 0
+  - type: 2
+    minProduction: -5
+    maxProduction: -1

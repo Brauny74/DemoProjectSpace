@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6362d206f4c3734b9efc98105d7dcdd, type: 3}
+  m_Name: LabAccident
+  m_EditorClassIdentifier: 
+  EventName: Lab Accident
+  Duration: 5
+  coeffs:
+  - good: {fileID: 11400000, guid: 6a80ee01b5ea8c843ab1e673e38bd2f5, type: 2}
+    priceCoeff: 1.2
+  - good: {fileID: 11400000, guid: acb19be7123c8514b9ee43e96c4f06d1, type: 2}
+    priceCoeff: 0.7
+  - good: {fileID: 11400000, guid: ff14db13ee674444da1a3952827a712c, type: 2}
+    priceCoeff: 1.2
+  randomWeight: 0.1

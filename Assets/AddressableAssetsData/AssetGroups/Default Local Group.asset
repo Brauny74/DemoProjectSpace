@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d2eb92b451c260840a5dee098393b4fb
+  m_SerializeEntries:
+  - m_GUID: c41f05a9e9a46db4eb6e1f5e073e30e2
+    m_Address: Scenes/Sector1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b96737a4ac157734e9143a0904595b30
+    m_Address: Planets/Bekasa
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 929d303df15a1374693535308f3be1bf
+    m_Address: Planets/Durgo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7a0fff3f22246fe42be7e57a8da8af79
+    m_Address: Planets/Lutecum
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 113b3479af5180f45b92bb9382b9e2ff
+    m_Address: Planets/Midori
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb75885c41234794dadf762941e7b7a6
+    m_Address: Planets/Velis
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9d8244505947a044a9401e8b27d1212f
+    m_Address: Ships/NPC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ee49f4516c137a44191cb6bbeae1f5b6
+    m_Address: Ships/Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9ab18966265947e469022925206816b8, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 983c67b39bcdea54eb1e4ff250174c66, type: 2}
+    - {fileID: 11400000, guid: 67def65d30fcba340b429c36010449b9, type: 2}

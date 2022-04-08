@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6362d206f4c3734b9efc98105d7dcdd, type: 3}
+  m_Name: Blight
+  m_EditorClassIdentifier: 
+  EventName: Blight
+  Duration: 5
+  coeffs:
+  - good: {fileID: 11400000, guid: 6a80ee01b5ea8c843ab1e673e38bd2f5, type: 2}
+    priceCoeff: 1.2
+  - good: {fileID: 11400000, guid: 2e2cdba2f396bc54bbdc5c23d83709d9, type: 2}
+    priceCoeff: 1.2
+  randomWeight: 0.1
