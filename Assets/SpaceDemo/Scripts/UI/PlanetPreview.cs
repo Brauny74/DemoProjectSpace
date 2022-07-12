@@ -8,9 +8,12 @@ namespace SpaceDemo
 {
     public class PlanetPreview : MonoBehaviour
     {
-        public TMP_Text planetNameText;
-        public TMP_Text planetTypeText;
-        public TMP_Text planetEventText;
+        [SerializeField]
+        protected TMP_Text planetNameText;
+        [SerializeField]
+        protected TMP_Text planetTypeText;
+        [SerializeField]
+        protected TMP_Text planetEventText;
 
         public void SetPanel(string planetName, string planetType, string eventName = "None")
         {

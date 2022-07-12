@@ -8,9 +8,10 @@ namespace SpaceDemo
 {
     public class PoolerAdressables : BasePooler
     {
-        public string objectToPoolAddress;
+        [SerializeField]
+        protected string objectToPoolAddress;
 
-        protected virtual void Start()
+        protected override void Start()
         {
             LoadObjectToPool();
         }

@@ -34,7 +34,7 @@ namespace SpaceDemo
             Transform returnPoint = GetRandomReturnPoint();
             GameManager.Instance.playerShip.transform.position = returnPoint.position;
             GameManager.Instance.playerShip.transform.rotation = returnPoint.rotation;
-            TimeManager.Instance.paused = false;
+            GameManager.Instance.playerShip.playerMovement.Stop();
         }
 
         public Transform GetRandomReturnPoint()
@@ -76,9 +76,9 @@ namespace SpaceDemo
 
         private void ProcessPlayerEnter()
         {
-            TimeManager.Instance.paused = true;
             GameManager.Instance.currentTradePoint = this;
             UpdateTradePanel();
+            PutPlayerShipBack();
         }
 
         private void ProcessNPCEnter(NPCShipController npcShip)

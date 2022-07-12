@@ -7,25 +7,34 @@ namespace SpaceDemo
 {
     [RequireComponent(typeof(Storage))]
     [RequireComponent(typeof(Wallet))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public class NPCShipController : MonoBehaviour
     {
-        public Vector3 target;
+        [SerializeField]
+        protected Vector3 target;
 
         public Storage storage;
         public Wallet wallet;
 
         [Tooltip("How many stacks of goods the randomized storage moght have")]
-        public int maxAmountOfStacks;
-        public List<TradeGood> possibleGoods;
-        public int minAmount;
-        public int maxAmount;
+        [SerializeField]
+        protected int maxAmountOfStacks;
+        [SerializeField]
+        protected List<TradeGood> possibleGoods;
+        [SerializeField]
+        protected int minAmount;
+        [SerializeField]
+        protected int maxAmount;
 
-        public int minMoney;
-        public int maxMoney;
+        [SerializeField]
+        protected int minMoney;
+        [SerializeField]
+        protected int maxMoney;
 
-        public MeshRenderer model;
-        private NavMeshAgent _agent;
-        private Material coloredMaterial;
+        [SerializeField]
+        protected MeshRenderer model;
+        protected NavMeshAgent _agent;
+        protected Material coloredMaterial;
 
         private void Awake()
         {

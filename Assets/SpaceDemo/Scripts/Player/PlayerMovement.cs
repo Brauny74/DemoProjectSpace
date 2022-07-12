@@ -7,10 +7,11 @@ namespace SpaceDemo {
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerMovement : MonoBehaviour
     {
-        public Marker markerPrefab;
-        private Marker marker;
+        [SerializeField]
+        protected Marker markerPrefab;
+        protected Marker marker;
 
-        private NavMeshAgent _agent;
+        protected NavMeshAgent _agent;
 
         private void Awake()
         {
@@ -18,30 +19,36 @@ namespace SpaceDemo {
             _agent = GetComponent<NavMeshAgent>();
         }
 
-        public void MoveTo(Vector3 clickPos)
+        public virtual void MoveToClick(Vector3 clickPos)
         {
             Ray ray = Camera.main.ScreenPointToRay(clickPos);
             LayerMask terrainMask = LayerMask.GetMask("Terrain");
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, terrainMask))
             {
-                NavMeshPath path = new NavMeshPath();
-                _agent.CalculatePath(hit.point, path);
-                if (path.status == NavMeshPathStatus.PathComplete)
-                {
-                    _agent.isStopped = false;
-                    _agent.SetPath(path);
-                    MoveMarker(hit.point);
-                }
+                MoveTo(hit.point);
             }
         }
 
-        public void Stop()
+        protected virtual void MoveTo(Vector3 movePos)
         {
+            NavMeshPath path = new NavMeshPath();
+            _agent.CalculatePath(movePos, path);
+            if (path.status == NavMeshPathStatus.PathComplete)
+            {
+                _agent.isStopped = false;
+                _agent.SetPath(path);
+                MoveMarker(movePos);
+            }
+        }
+
+        public virtual void Stop()
+        {
+            MoveTo(transform.position);
             _agent.isStopped = true;
         }
 
-        private void MoveMarker(Vector3 pos)
+        protected virtual void MoveMarker(Vector3 pos)
         {
             if (marker == null)
                 return;

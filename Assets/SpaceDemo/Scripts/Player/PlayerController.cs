@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace SpaceDemo
 {
+    [RequireComponent(typeof(Storage))]
+    [RequireComponent(typeof(Wallet))]
+    [RequireComponent(typeof(PlayerMovement))]
     public class PlayerController : MonoBehaviour
     {
         public string playerName;
@@ -11,10 +14,13 @@ namespace SpaceDemo
         public Storage playerStorage;
         public Wallet playerWallet;
 
+        public PlayerMovement playerMovement;
+
         private void Awake()
         {
             playerStorage = GetComponent<Storage>();
             playerWallet = GetComponent<Wallet>();
+            playerMovement = GetComponent<PlayerMovement>();
         }
 
         // Start is called before the first frame update

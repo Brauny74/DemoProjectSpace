@@ -7,25 +7,33 @@ namespace SpaceDemo
     public class PlanetController : MonoBehaviour
     {
         public string planetName;
-        public PlanetType type;
+        [SerializeField]
+        protected PlanetType type;
 
-        public List<TradeGood> producedGoods;
+        [SerializeField]
+        protected List<TradeGood> producedGoods;
 
-        public List<PlanetEvent> possibleEvents;
+        [SerializeField]
+        protected List<PlanetEvent> possibleEvents;
 
-        private Storage _storage;
-        private int currentEventIndex;
-        private int currentEventDuration;
+        protected Storage _storage;
+        protected int currentEventIndex;
+        protected int currentEventDuration;
 
         public void ShowPreviewPanel()
         {
             GUIManager.Instance.ShowPlanetPreview(true, planetName, type.ToString(), possibleEvents[currentEventIndex].EventName);
         }
 
+        public void HidePreviewPanel()
+        {
+            GUIManager.Instance.ShowPlanetPreview(false);
+        }
+
         private void Awake()
         {            
             _storage = GetComponent<Storage>();
-            currentEventIndex = -1;
+            OnDayEnd();
         }
 
         private void OnEnable()

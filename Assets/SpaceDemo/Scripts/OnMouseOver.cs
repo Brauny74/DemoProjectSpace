@@ -9,7 +9,7 @@ public class OnMouseOver : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if (hit.collider.gameObject == gameObject)
+            if (hit.collider.gameObject == this.gameObject)
             {
                 return true;
             }

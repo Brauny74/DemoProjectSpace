@@ -6,7 +6,8 @@ namespace SpaceDemo
 {
     public class Pooler : BasePooler
     {
-        public GameObject objectToPool;
+        [SerializeField]
+        protected GameObject objectToPool;
 
         protected override void Start()
         {

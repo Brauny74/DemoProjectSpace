@@ -9,7 +9,6 @@ namespace SpaceDemo
         public void ClosePanel()
         {
             GUIManager.Instance.ShowTradePanel(false);
-            GameManager.Instance.currentTradePoint.PutPlayerShipBack();
         }
     }
 }

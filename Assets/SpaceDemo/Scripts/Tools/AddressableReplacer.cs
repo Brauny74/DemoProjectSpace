@@ -6,7 +6,8 @@ namespace SpaceDemo
 {
     public class AddressableReplacer : MonoBehaviour
     {
-        public string objectAddress;
+        [SerializeField]
+        protected string objectAddress;
 
         public void Start()
         {

@@ -7,7 +7,7 @@ namespace SpaceDemo
     [RequireComponent(typeof(Outline))]
     public class OutlineOnMouseHover : OnMouseOver
     {
-        private Outline _outline;
+        protected Outline _outline;
 
         private void Awake()
         {
@@ -20,7 +20,7 @@ namespace SpaceDemo
         }
 
         private void ShowOutline(bool value)
-        { 
+        {            
             if(value)
             {
                 _outline.enabled = true;

@@ -7,13 +7,20 @@ namespace SpaceDemo
 {
     public class GUIManager : Singleton<GUIManager>
     {
-        public Image timeProgressBar;
-        public PlanetPreview planetPreview;
-        public TradePanel tradePanel;
-        public DealViewUI dealPanel;
-        public GameObject inventoryPanel;
-        public GameObject loadingScreen;
-        public GameObject pausePanel;
+        [SerializeField]
+        protected Image timeProgressBar;
+        [SerializeField]
+        protected PlanetPreview planetPreview;
+        [SerializeField]
+        protected TradePanel tradePanel;
+        [SerializeField]
+        protected DealViewUI dealPanel;
+        [SerializeField]
+        protected GameObject inventoryPanel;
+        [SerializeField]
+        protected GameObject loadingScreen;
+        [SerializeField]
+        protected GameObject pausePanel;
 
         public void SetDayImage(float currentFill)
         {
@@ -37,6 +44,11 @@ namespace SpaceDemo
         public void ShowTradePanel(bool value)
         {
             tradePanel.gameObject.SetActive(value);
+            GameManager.Instance.playerShip.playerMovement.Stop();//this is a little hack to stop ship from following the position of the close button.
+            if (value)
+                TimeManager.Instance.paused = true;
+            else
+                TimeManager.Instance.paused = false;
         }
 
         public void ShowTradePanel(bool value, List<StoredGood> partnerGoods, string pname, int pmoney)
