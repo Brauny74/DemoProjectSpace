@@ -31,9 +31,14 @@ namespace SpaceDemo
         }
 
         private void Awake()
-        {            
+        {
+            Init();            
+        }
+
+        private void Init()
+        {
             _storage = GetComponent<Storage>();
-            OnDayEnd();
+            OnDayEnd();            
         }
 
         private void OnEnable()
