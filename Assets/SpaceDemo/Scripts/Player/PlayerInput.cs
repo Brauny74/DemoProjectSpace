@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace SpaceDemo
 {
@@ -15,31 +16,42 @@ namespace SpaceDemo
         protected string PauseAxis;
 
         protected PlayerMovement _plMov;
+        private TimeManager _timeManager;
+        private GUIManager _guiManager;
 
-        void Awake()
+        #region Zenject
+        [Inject]
+        public void Constructor(PlayerMovement playerMovement, GUIManager guiManager, TimeManager timeManager)
         {
-           _plMov = GetComponent<PlayerMovement>();
+            _plMov = playerMovement;
+            _guiManager = guiManager;
+            _timeManager = timeManager;
         }
+        #endregion
+
+        #region MonoBehavior
 
         // Update is called once per frame
         void Update()
         {
             ProcessInput();
         }
+        #endregion
 
+        #region PlayerInput
         private void ProcessInput()
         {
             if (Input.GetButtonDown(InventoryAxis))
             {
-                GUIManager.Instance.ShowInventoryPanel(!GUIManager.Instance.IsInventoryPanelOpen());
+                _guiManager.ShowInventoryPanel(!_guiManager.IsInventoryPanelOpen());
             }
 
             if (Input.GetButtonDown(PauseAxis))
             {
-                GUIManager.Instance.ShowPausePanel(!GUIManager.Instance.IsPausePanelOpen());
+                _guiManager.ShowPausePanel(!_guiManager.IsPausePanelOpen());
             }
 
-            if (TimeManager.Instance.paused)
+            if (_timeManager.paused)
             {
                 _plMov.Stop();
                 return;
@@ -50,5 +62,6 @@ namespace SpaceDemo
                 _plMov.MoveToClick(Input.mousePosition);
             }
         }
+        #endregion
     }
 }

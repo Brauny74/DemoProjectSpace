@@ -2,103 +2,117 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace SpaceDemo
 {
     public class GUIManager : Singleton<GUIManager>
     {
         [SerializeField]
-        protected Image timeProgressBar;
+        protected Image TimeProgressBar;
         [SerializeField]
-        protected PlanetPreview planetPreview;
+        protected PlanetPreview PlanetPreview;
         [SerializeField]
-        protected TradePanel tradePanel;
+        protected TradePanel TradePanel;
         [SerializeField]
-        protected DealViewUI dealPanel;
+        protected DealViewUI DealPanel;
         [SerializeField]
-        protected GameObject inventoryPanel;
+        protected GameObject InventoryPanel;
         [SerializeField]
-        protected GameObject loadingScreen;
+        protected GameObject LoadingScreen;
         [SerializeField]
-        protected GameObject pausePanel;
+        protected GameObject PausePanel;
 
+        private GameManager _gameManager;
+        private TimeManager _timeManager;
+
+        #region Zenject
+        [Inject]
+        public void Constructor(GameManager gameManager, TimeManager timeManager)
+        {
+            _gameManager = gameManager;
+            _timeManager = timeManager;
+        }
+        #endregion
+
+        #region GUIManager
         public void SetDayImage(float currentFill)
         {
-            if (timeProgressBar == null)
+            if (TimeProgressBar == null)
                 return;
 
-            timeProgressBar.fillAmount = currentFill;
+            TimeProgressBar.fillAmount = currentFill;
         }
 
         public void ShowPlanetPreview(bool value)
         {
-            planetPreview.gameObject.SetActive(value);
+            PlanetPreview.gameObject.SetActive(value);
         }
 
         public void ShowPlanetPreview(bool value, string planetName, string planetType, string planetEvent = "None")
         {
-            planetPreview.gameObject.SetActive(value);
-            planetPreview.SetPanel(planetName, planetType, planetEvent);
+            PlanetPreview.gameObject.SetActive(value);
+            PlanetPreview.SetPanel(planetName, planetType, planetEvent);
         }
 
         public void ShowTradePanel(bool value)
         {
-            tradePanel.gameObject.SetActive(value);
-            GameManager.Instance.playerShip.playerMovement.Stop();//this is a little hack to stop ship from following the position of the close button.
+            TradePanel.gameObject.SetActive(value);
+            _gameManager.PlayerShip.PlayerMovement.Stop();//this is a little hack to stop ship from following the position of the close button.
             if (value)
-                TimeManager.Instance.paused = true;
+                _timeManager.paused = true;
             else
-                TimeManager.Instance.paused = false;
+                _timeManager.paused = false;
         }
 
         public void ShowTradePanel(bool value, List<StoredGood> partnerGoods, string pname, int pmoney)
         {
-            tradePanel.gameObject.SetActive(value);
-            tradePanel.ShowPartnerPanel(partnerGoods, pname, pmoney);
-            PlayerController playerShip = GameManager.Instance.playerShip;
-            tradePanel.ShowPlayerPanel(playerShip.playerStorage.contents, playerShip.playerName, playerShip.playerWallet.Money);
+            TradePanel.gameObject.SetActive(value);
+            TradePanel.ShowPartnerPanel(partnerGoods, pname, pmoney);
+            PlayerController playerShip = _gameManager.PlayerShip;
+            TradePanel.ShowPlayerPanel(playerShip.PlayerStorage.contents, playerShip.PlayerName, playerShip.PlayerWallet.Money);
         }
 
         public void ShowDealPanel(bool value)
         {
-            dealPanel.gameObject.SetActive(value);
+            DealPanel.gameObject.SetActive(value);
         }
 
         public void ShowDealPanel(bool value, StoredGood dealGood, bool isPlayer)
         {
-            dealPanel.gameObject.SetActive(value);
-            dealPanel.SetDeal(dealGood, isPlayer);
+            DealPanel.gameObject.SetActive(value);
+            DealPanel.SetDeal(dealGood, isPlayer);
         }
 
         public void ShowInventoryPanel(bool value)
         {
-            inventoryPanel.SetActive(value);
+            InventoryPanel.SetActive(value);
             if (value)
             {
-                TimeManager.Instance.paused = true;
-                GoodsList list = inventoryPanel.GetComponentInChildren<GoodsList>();
+                _timeManager.paused = true;
+                GoodsList list = InventoryPanel.GetComponentInChildren<GoodsList>();
                 list.ClearList();
-                list.SetList(GameManager.Instance.playerShip.playerStorage.contents);
+                list.SetList(_gameManager.PlayerShip.PlayerStorage.contents);
             }
             else
             {
-                TimeManager.Instance.paused = false;
+                _timeManager.paused = false;
             }
         }
 
         public bool IsInventoryPanelOpen()
         {
-            return inventoryPanel.activeInHierarchy;
+            return InventoryPanel.activeInHierarchy;
         }
 
         public void ShowLoadingScreen(bool value)
         {
-            loadingScreen.SetActive(value);
+            LoadingScreen.SetActive(value);
         }
 
         public void ShowPausePanel(bool value)
         {
-            pausePanel.SetActive(value);
+            PausePanel.SetActive(value);
             if (value)
                 Time.timeScale = 0.0f;
             else
@@ -107,7 +121,8 @@ namespace SpaceDemo
 
         public bool IsPausePanelOpen()
         {
-            return pausePanel.activeInHierarchy;
+            return PausePanel.activeInHierarchy;
         }
+        #endregion
     }
 }

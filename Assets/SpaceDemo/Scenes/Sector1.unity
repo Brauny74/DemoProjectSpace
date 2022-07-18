@@ -991,6 +991,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17474fd5a0f926843b20d54e0b8673ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &424119516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424119519}
+  - component: {fileID: 424119518}
+  - component: {fileID: 424119517}
+  m_Layer: 0
+  m_Name: SceneContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &424119517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424119516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0cf33c2df147546b5fc2c233f0a700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerShipPrefab: {fileID: 1424142874113977589, guid: ee49f4516c137a44191cb6bbeae1f5b6, type: 3}
+  MarkerPrefab: {fileID: 4333010953368088255, guid: ae2db326d5010a74e8cb1b27f15f5ffd, type: 3}
+--- !u!114 &424119518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424119516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 424119517}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &424119519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424119516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 100, y: 0, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441929796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,7 +2563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistent: 0
-  playerShip: {fileID: 0}
   currentTradePoint: {fileID: 0}
   cmVCamera: {fileID: 1881575174}
   OnLoadEnded:
@@ -4344,7 +4421,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286307325
 GameObject:
@@ -4949,7 +5026,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1362430445
 GameObject:
@@ -5270,7 +5347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1422112492
 MonoBehaviour:
@@ -5336,7 +5413,7 @@ Transform:
   - {fileID: 29335863}
   - {fileID: 575771662}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1456856056
 GameObject:
@@ -5829,7 +5906,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1509809514
 GameObject:
@@ -7153,7 +7230,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884333407}
   m_CullTransparentMesh: 1
---- !u!1 &1908524409
+--- !u!1 &1888116816
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7161,41 +7238,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1908524411}
-  - component: {fileID: 1908524410}
+  - component: {fileID: 1888116817}
   m_Layer: 0
-  m_Name: PlayerSpawner
+  m_Name: TradeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1908524410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908524409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb911f99768569f43a26f3f5f2b88419, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectAddress: Ships/Player
---- !u!4 &1908524411
+--- !u!4 &1888116817
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908524409}
+  m_GameObject: {fileID: 1888116816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.4, y: 0, z: -20.7}
+  m_LocalPosition: {x: -24.871056, y: -41.55671, z: -14.445747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933527727
 GameObject:
@@ -7345,13 +7408,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistent: 0
-  timeProgressBar: {fileID: 1558709486}
-  planetPreview: {fileID: 670185068}
-  tradePanel: {fileID: 1933527729}
-  dealPanel: {fileID: 682888742}
-  inventoryPanel: {fileID: 2108219973}
-  loadingScreen: {fileID: 2002970781}
-  pausePanel: {fileID: 394245227}
+  TimeProgressBar: {fileID: 1558709486}
+  PlanetPreview: {fileID: 670185068}
+  TradePanel: {fileID: 1933527729}
+  DealPanel: {fileID: 682888742}
+  InventoryPanel: {fileID: 2108219973}
+  LoadingScreen: {fileID: 2002970781}
+  PausePanel: {fileID: 394245227}
 --- !u!1 &2002970781
 GameObject:
   m_ObjectHideFlags: 0

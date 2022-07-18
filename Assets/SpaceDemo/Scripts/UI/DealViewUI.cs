@@ -50,7 +50,7 @@ namespace SpaceDemo
 
         public void MakeDeal()
         {
-            GameManager.Instance.MakeDeal(currentGood, currentAmount, isPlayer);
+            GameManager.Instance.currentTradePoint.MakeDeal(currentGood, currentAmount, isPlayer);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace SpaceDemo
             }
             else
             {
-                if (currentGood.actualPrice * currentAmount > GameManager.Instance.playerShip.playerWallet.Money)
+                if (currentGood.actualPrice * currentAmount > GameManager.Instance.PlayerShip.PlayerWallet.Money)
                 {
                     dealButton.interactable = false;
                 }

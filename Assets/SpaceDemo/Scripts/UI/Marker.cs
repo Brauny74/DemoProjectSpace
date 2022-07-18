@@ -16,6 +16,7 @@ namespace SpaceDemo
 
         public void MoveTo(Vector3 pos)
         {
+            gameObject.SetActive(true);
             _anmr.SetTrigger("Enabled");
             transform.position = pos;
         }

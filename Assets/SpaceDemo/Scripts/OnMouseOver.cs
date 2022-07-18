@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OnMouseOver : MonoBehaviour
+public abstract class OnMouseOver : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;

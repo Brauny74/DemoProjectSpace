@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
+
 
 namespace SpaceDemo {
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField]
-        protected Marker markerPrefab;
-        protected Marker marker;
-
+        protected Marker MyMarker;
         protected NavMeshAgent _agent;
+
+        [Inject]
+        public void Constructor(Marker marker)
+        {
+            MyMarker = marker;
+        }
 
         private void Awake()
         {
-            marker = Instantiate(markerPrefab);
             _agent = GetComponent<NavMeshAgent>();
         }
 
@@ -50,11 +54,10 @@ namespace SpaceDemo {
 
         protected virtual void MoveMarker(Vector3 pos)
         {
-            if (marker == null)
+            if (MyMarker == null)
                 return;
 
-            marker.gameObject.SetActive(true);
-            marker.MoveTo(pos);
+            MyMarker.MoveTo(pos);
         }
     }
 }

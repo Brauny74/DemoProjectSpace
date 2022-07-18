@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace SpaceDemo
 {
@@ -9,24 +10,32 @@ namespace SpaceDemo
     [RequireComponent(typeof(PlayerMovement))]
     public class PlayerController : MonoBehaviour
     {
-        public string playerName;
+        public string PlayerName;
 
-        public Storage playerStorage;
-        public Wallet playerWallet;
-
-        public PlayerMovement playerMovement;
-
-        private void Awake()
+        public Storage PlayerStorage
         {
-            playerStorage = GetComponent<Storage>();
-            playerWallet = GetComponent<Wallet>();
-            playerMovement = GetComponent<PlayerMovement>();
+            get { return _playerStorage; }
         }
+        private Storage _playerStorage;
 
-        // Start is called before the first frame update
-        void Start()
+        public Wallet PlayerWallet 
         {
-            GameManager.Instance.playerShip = this;
+            get { return _playerWallet; }
+        }
+        private Wallet _playerWallet;
+
+        public PlayerMovement PlayerMovement
+        {
+            get { return _playerMovement; }
+        }
+        private PlayerMovement _playerMovement;
+
+        [Inject]
+        public void Constructor(Storage storage, Wallet wallet, PlayerMovement playerMovement)
+        {
+            _playerStorage = storage;
+            _playerWallet = wallet;
+            _playerMovement = playerMovement;
         }
     }
 }

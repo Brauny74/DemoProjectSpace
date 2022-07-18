@@ -16,6 +16,7 @@ namespace SpaceDemo
         private Wallet _wallet;
         private string tradeName;
 
+        #region MonoBehavior
         void Awake()
         {
             _storage = GetComponent<Storage>();
@@ -28,13 +29,26 @@ namespace SpaceDemo
                 tradeName = _planet.planetName;
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == playerTag)
+            {
+                ProcessPlayerEnter();
+            }
+            if (collision.gameObject.tag == npcShipTag)
+            {
+                ProcessNPCEnter(collision.gameObject.GetComponent<NPCShipController>());
+            }
+        }
+        #endregion
 
+        #region TradePoint
         public void PutPlayerShipBack()
         {
             Transform returnPoint = GetRandomReturnPoint();
-            GameManager.Instance.playerShip.transform.position = returnPoint.position;
-            GameManager.Instance.playerShip.transform.rotation = returnPoint.rotation;
-            GameManager.Instance.playerShip.playerMovement.Stop();
+            GameManager.Instance.PlayerShip.transform.position = returnPoint.position;
+            GameManager.Instance.PlayerShip.transform.rotation = returnPoint.rotation;
+            GameManager.Instance.PlayerShip.PlayerMovement.Stop();
         }
 
         public Transform GetRandomReturnPoint()
@@ -57,21 +71,30 @@ namespace SpaceDemo
             return _wallet.Money;
         }
 
-        public void UpdateTradePanel()
+        private void UpdateTradePanel()
         {
             _storage.UpdateTradePanel(tradeName, _wallet.Money);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        public void MakeDeal(StoredGood good, int amount, bool isSelling)
         {
-           if (collision.gameObject.tag == playerTag)
+            var playerShip = GameManager.Instance.PlayerShip;
+            if (isSelling)
             {
-                ProcessPlayerEnter();
+                playerShip.PlayerStorage.Add(good.goodData, 0 - amount);
+                playerShip.PlayerWallet.AddMoney(good.actualPrice * amount);
+                AddGoods(good.goodData, amount);
+                AddMoney(0 - (good.actualPrice * amount));
             }
-            if (collision.gameObject.tag == npcShipTag)
+            else
             {
-                ProcessNPCEnter(collision.gameObject.GetComponent<NPCShipController>());
+                playerShip.PlayerStorage.Add(good.goodData, amount);
+                playerShip.PlayerWallet.AddMoney(0 - (good.actualPrice * amount));
+                AddGoods(good.goodData, 0 - amount);
+                AddMoney(good.actualPrice * amount);
             }
+            GUIManager.Instance.ShowDealPanel(true, good, isSelling);
+            UpdateTradePanel();
         }
 
         private void ProcessPlayerEnter()
@@ -90,5 +113,6 @@ namespace SpaceDemo
             _wallet.AddMoney(npcShip.wallet.Money);
             npcShip.gameObject.SetActive(false);
         }
+        #endregion
     }
 }

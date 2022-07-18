@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace SpaceDemo
 {
@@ -13,13 +14,18 @@ namespace SpaceDemo
         public bool paused = false;
 
         private float _currentTimeInDay;
+        private GUIManager _guiManager;
 
-        private void Start()
+        #region Zenject
+        [Inject]
+        public void Constructor(GUIManager guiManager)
         {
-            OnDayEnd.Invoke();
+            _guiManager = guiManager;
         }
+        #endregion
 
-        public void DayEnd()
+        #region MonoBehavior
+        private void Start()
         {
             OnDayEnd.Invoke();
         }
@@ -28,6 +34,15 @@ namespace SpaceDemo
         {
             ProcessTime();
         }
+        #endregion
+
+        #region TimeManager
+
+        public void DayEnd()
+        {
+            OnDayEnd.Invoke();
+        }
+
 
         private void ProcessTime()
         {
@@ -41,7 +56,8 @@ namespace SpaceDemo
                 DayEnd();
             }
 
-            GUIManager.Instance.SetDayImage(_currentTimeInDay / dayLength);
+            _guiManager.SetDayImage(_currentTimeInDay / dayLength);
         }
+        #endregion
     }
 }
